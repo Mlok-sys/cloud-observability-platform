@@ -1,0 +1,58 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches: [ "main" ]        # Trigger deployment on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Copy monitoring stack to EC2
+      - name: Copy monitoring files to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "Infra/home/ec2-user/monitoring/*"
+          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring/"
+
+      # Step 3: (Optional) Copy app folder if exists
+      - name: Copy app to EC2
+        if: ${{ hashFiles('app/**') != '' }}
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "app/*"
+          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/app/"
+
+      # Step 4: Restart Docker Compose remotely
+      - name: Restart Docker Compose on EC2
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring
+            sudo docker-compose down || true
+            sudo docker-compose up -d --build
+
+      # Step 5: Verify running containers (for logs/debugging)
+      - name: Verify containers
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Active containers:"
+            sudo docker ps

@@ -1,0 +1,18 @@
+# Terraform cache and state
+.terraform/
+Infra/.terraform/
+Infra/.terraform.lock.hcl
+Infra/terraform.tfstate*
+*.tfstate.backup
+
+# Credentials and keys
+*.pem
+*.key
+*.env
+
+
+# Node.js stuff
+app/node_modules/
+
+# VS Code files
+.vscode/
