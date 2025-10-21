@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: |
             "monitoring/*"
-            "app/*
+            "app/*"
           target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring/"
 
       # Step 4: Restart Docker Compose remotely
