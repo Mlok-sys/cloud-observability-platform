@@ -20,12 +20,12 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "Infra/home/ec2-user/monitoring/*"
+          source: "monitoring/*"
           target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring/"
 
       # Step 3: (Optional) Copy app folder if exists
       - name: Copy app to EC2
-        if: ${{ hashFiles('app/**') != '' }}
+        
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
