@@ -41,7 +41,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "app/*"
-          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/app/"
+          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/app/*"
 
       # Step 4: Restart Docker Compose remotely
       - name: Restart Docker Compose on EC2
