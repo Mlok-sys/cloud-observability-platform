@@ -30,8 +30,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "monitoring/*"
-          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring/"
+          source: "monitoring"
+          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/"
 
       # Step 3: (Optional) Copy app folder
       - name: Copy app to EC2
@@ -40,8 +40,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "app/*"
-          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/app/"
+          source: "app"
+          target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/"
 
       # Step 4: Restart Docker Compose remotely
       - name: Restart Docker Compose on EC2
