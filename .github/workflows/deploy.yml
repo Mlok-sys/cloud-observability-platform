@@ -55,18 +55,19 @@ jobs:
             sudo docker-compose down || true
             sudo docker-compose up -d --build
 
-      - name: Restart Docker Compose on EC2 (clean rebuild)
+      - name: Restart Docker Compose on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "Stopping and cleaning old containers..."
             cd /home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring
+            echo "Stopping all containers..."
             sudo docker-compose down || true
-            sudo docker system prune -af || true
-            echo " Rebuilding all images from scratch..."
-            sudo docker-compose up -d --build --force-recreate --no-deps --remove-orphans
-            echo "Deployment finished successfully!"
+            echo "Removing any old app container..."
+            sudo docker rm -f myapp || true
+            echo "Starting fresh build..."
+            sudo docker-compose up -d --build
+
 
