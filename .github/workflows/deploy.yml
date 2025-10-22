@@ -2,7 +2,7 @@ name: Deploy to AWS EC2
 
 on:
   push:
-    branches: [ "main" ]        # Trigger deployment on push to main branch
+    branches: [ "main" ]        
 
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
           aws ec2 start-instances --instance-ids i-0d1bb221ce6aaca52
           aws ec2 wait instance-running --instance-ids i-0d1bb221ce6aaca52
           sleep 60
-      # Step 2: Copy monitoring stack to EC2
+      
       - name: Copy monitoring files to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -33,7 +33,7 @@ jobs:
           source: "monitoring"
           target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM"
 
-      # Step 3: (Optional) Copy app folder
+      
       - name: Copy app to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -43,7 +43,7 @@ jobs:
           source: "app"
           target: "/home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM"
 
-      # Step 4: Restart Docker Compose remotely
+      
       - name: Restart Docker Compose on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
@@ -55,13 +55,18 @@ jobs:
             sudo docker-compose down || true
             sudo docker-compose up -d --build
 
-      # Step 5: Verify running containers (for logs/debugging)
-      - name: Verify containers
+      - name: Restart Docker Compose on EC2 (clean rebuild)
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "Active containers:"
-            sudo docker ps
+            echo "Stopping and cleaning old containers..."
+            cd /home/ec2-user/CLOUD-OBSERVABILITY-PLATFORM/monitoring
+            sudo docker-compose down || true
+            sudo docker system prune -af || true
+            echo " Rebuilding all images from scratch..."
+            sudo docker-compose up -d --build --force-recreate --no-deps --remove-orphans
+            echo "Deployment finished successfully!"
+
