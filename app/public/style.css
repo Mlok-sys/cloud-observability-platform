@@ -1,40 +1,112 @@
+/* ===== Global Styles ===== */
 body {
-  background: #0b1120;
-  color: #f4f4f4;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
   margin: 0;
-  padding: 60px;
+  padding: 0;
+  text-align: center;
+  line-height: 1.6;
 }
 
-h1 {
+h1, h2, h3 {
   color: #00d1b2;
-  font-size: 2.8em;
-  margin-bottom: 0.2em;
 }
 
-p {
-  color: #aaa;
-  font-size: 1.2em;
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.diagram {
-  width: 65%;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  margin: 25px 0;
-}
-
+/* ===== Buttons ===== */
 .button {
   display: inline-block;
-  padding: 12px 20px;
-  background: #00d1b2;
-  color: #fff;
+  background-color: #00d1b2;
+  color: #0f172a;
+  padding: 12px 25px;
+  margin-top: 25px;
+  border-radius: 8px;
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: #14b8a6;
+  transform: scale(1.05);
 }
 
-.button:hover {
-  background: #009e8e;
+/* ===== Stack Section ===== */
+.stack {
+  margin-top: 60px;
+}
+.tools {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+.tool {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  width: 270px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tool:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 15px #00d1b2;
+}
+.tool img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 15px;
+}
+.tool h3 {
+  margin-bottom: 10px;
+}
+
+/* ===== Architecture Section ===== */
+.architecture {
+  margin-top: 80px;
+}
+.diagram {
+  margin-top: 25px;
+  width: 100%;
+  max-width: 750px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 209, 178, 0.3);
+}
+
+/* ===== Screenshots Section ===== */
+.screenshots {
+  margin-top: 80px;
+}
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 25px;
+}
+.gallery img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 209, 178, 0.25);
+  transition: transform 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .tools, .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+  .tool, .gallery img {
+    width: 90%;
+  }
 }
