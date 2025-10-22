@@ -1,47 +1,40 @@
-.stack {
-    margin-top: 60px;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+body {
+  background: #0b1120;
+  color: #f4f4f4;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 60px;
 }
 
-.stack h2 {
-    color: #00d1b2;
-    margin-bottom: 25px;
+h1 {
+  color: #00d1b2;
+  font-size: 2.8em;
+  margin-bottom: 0.2em;
 }
 
-.tools {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
+p {
+  color: #aaa;
+  font-size: 1.2em;
 }
 
-.tool {
-    width: 250px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    padding: 20px;
-    transition: 0.3s ease;
+.diagram {
+  width: 65%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  margin: 25px 0;
 }
 
-.tool:hover {
-    transform: translateY(-8px);
-    background: rgba(0, 0, 0, 0.6);
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #00d1b2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
-.tool img {
-    width: 70px;
-    height: 70px;
-}
-
-.tool h3 {
-    color: #00d1b2;
-    margin-top: 15px;
-}
-
-.tool p {
-    color: #ccc;
-    font-size: 0.95em;
+.button:hover {
+  background: #009e8e;
 }
