@@ -1,0 +1,15 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2 {
+    color: #00b4d8;
+}
+
+img {
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+}
