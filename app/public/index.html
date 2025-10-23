@@ -8,47 +8,42 @@
 </head>
 <body>
   <div class="container">
-    <h1>🚀 Cloud Observability Platform</h1>
+    <h1>Cloud Observability Platform</h1>
     <p>This project demonstrates a full monitoring and observability stack built on AWS EC2 using <strong>Docker</strong>, <strong>Terraform</strong>, and <strong>GitHub Actions</strong>.</p>
     
     <section class="stack">
-      <h2>🔍 Observability Stack</h2>
+      <h2>Observability Stack</h2>
       <div class="tools">
         <div class="tool">
           <img src="images/grafana.png" alt="Grafana">
           <h3>Grafana</h3>
-          <p>Visualizes dashboards from Prometheus and Loki. Used for real-time monitoring and alerting.</p>
+          <p>Visualizes dashboards from Prometheus and Loki for real-time system monitoring and alerting.</p>
         </div>
         <div class="tool">
           <img src="images/prometheus.png" alt="Prometheus">
           <h3>Prometheus</h3>
-          <p>Scrapes and stores metrics from Node Exporter and the app. Provides query-based insights.</p>
+          <p>Scrapes and stores metrics from Node Exporter and the app, providing query-based insights.</p>
         </div>
         <div class="tool">
           <img src="images/loki.png" alt="Loki">
           <h3>Loki</h3>
-          <p>Centralizes and indexes container logs for easy debugging alongside metrics.</p>
+          <p>Collects and indexes container logs for fast, centralized debugging.</p>
         </div>
       </div>
     </section>
 
-    <section class="architecture">
-      <h2>🏗️ Project Architecture</h2>
-      <p>Below is the high-level architecture of the Cloud Observability Platform, deployed via Terraform and Docker Compose:</p>
-      <img src="images/architecture.png" alt="Architecture Diagram" class="diagram">
-    </section>
-
     <section class="screenshots">
-      <h2>📸 Monitoring Dashboards</h2>
-      <p>Here are example dashboards showing live metrics and logs from Grafana and Prometheus.</p>
+      <h2>Monitoring Dashboards</h2>
+      <p>Below are real snapshots from the Cloud Observability Platform showing live metrics, targets, and logs.</p>
       <div class="gallery">
-        <img src="images/grafana-dashboard.png" alt="Grafana Dashboard">
+        <img src="images/grafana-dashboard.png" alt="Grafana Main Dashboard">
+        <img src="images/grafana-app-dashboard.png" alt="Grafana App Dashboard">
         <img src="images/prometheus-targets.png" alt="Prometheus Targets">
         <img src="images/loki-logs.png" alt="Loki Logs">
       </div>
     </section>
 
-    <a href="/metrics" class="button">📊 View Live Prometheus Metrics</a>
+    <a href="/metrics" class="button">View Live Prometheus Metrics</a>
   </div>
   <script src="script.js"></script>
 </body>
