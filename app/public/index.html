@@ -2,61 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cloud Observability Platform</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="container">
-        <h1>🚀 Cloud Observability Platform</h1>
-        <p>This project demonstrates a complete observability stack on AWS EC2 using <strong>Docker</strong>,
-            <strong>Terraform</strong>, and <strong>GitHub Actions</strong>.</p>
+        <h1>Cloud Observability Platform</h1>
+        <p>
+            A fully monitored and automated cloud project deployed on <strong>AWS EC2</strong>,
+            managed with <strong>Terraform</strong>, and continuously delivered through
+            <strong>GitHub Actions</strong>. The platform integrates <strong>Prometheus</strong>,
+            <strong>Grafana</strong>, and <strong>Loki</strong> to achieve full observability.
+        </p>
 
+        <!-- Observability Stack -->
         <section class="stack">
-            <h2>🔍 Observability Stack</h2>
+            <h2>Observability Stack</h2>
             <div class="tools">
                 <div class="tool">
-                    <img src="images/grafana.png" alt="Grafana">
+                    <img src="images/grafana.png" alt="Grafana" />
                     <h3>Grafana</h3>
-                    <p>Visualizes real-time dashboards from Prometheus metrics and Loki logs, providing deep
-                        observability insights.</p>
+                    <p>Visualizes dashboards, metrics, and logs in real time from Prometheus and Loki.</p>
                 </div>
                 <div class="tool">
-                    <img src="images/prometheus.png" alt="Prometheus">
+                    <img src="images/prometheus.png" alt="Prometheus" />
                     <h3>Prometheus</h3>
-                    <p>Scrapes metrics from Node Exporter and the app, acting as the central time-series database for
-                        monitoring.</p>
+                    <p>Scrapes and stores metrics from Node Exporter and the app using HTTP endpoints.</p>
                 </div>
                 <div class="tool">
-                    <img src="images/loki.png" alt="Loki">
+                    <img src="images/loki.png" alt="Loki" />
                     <h3>Loki</h3>
-                    <p>Collects and indexes container logs, allowing developers to correlate metrics and logs
-                        seamlessly.</p>
+                    <p>Collects container logs, enabling fast debugging by correlating logs and metrics.</p>
+                </div>
+                <div class="tool">
+                    <img src="images/github-actions.png" alt="GitHub Actions" />
+                    <h3>GitHub Actions</h3>
+                    <p>Automates deployment to EC2, ensuring every commit triggers a fresh Docker build.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Architecture -->
         <section class="architecture">
-            <h2>🏗️ Project Architecture</h2>
-            <p>The platform is built with Terraform-managed infrastructure, Docker-based monitoring stack, and CI/CD
-                deployment via GitHub Actions.</p>
-            <img src="images/architecture.png" alt="Architecture Diagram" class="diagram">
+            <h2>Project Architecture</h2>
+            <p>
+                The diagram below shows the flow from <strong>GitHub</strong> to <strong>EC2</strong>,
+                which hosts Docker containers for Prometheus, Grafana, Loki, Node Exporter, and the monitored app.
+            </p>
+            <img src="images/architecture.png" alt="Architecture Diagram" class="diagram architecture-img" />
         </section>
 
-        <section class="screenshots">
-            <h2>📊 Monitoring Dashboards</h2>
-            <p>Below are example dashboards from Grafana and Prometheus showing live data collection and visualization.
+        <!-- CI/CD Workflow -->
+        <section class="cicd">
+            <h2>CI/CD Pipeline</h2>
+            <p>
+                This project uses a fully automated deployment pipeline built with <strong>GitHub Actions</strong>.
+                On every push to the <code>main</code> branch:
             </p>
+            <ol>
+                <li>Starts the AWS EC2 instance using <strong>aws-actions</strong>.</li>
+                <li>Copies updated <strong>monitoring</strong> and <strong>app</strong> directories to the instance.
+                </li>
+                <li>Rebuilds and redeploys all containers using <strong>Docker Compose</strong>.</li>
+                <li>Verifies that all monitoring components are running successfully.</li>
+            </ol>
+            <p>
+                View the full workflow on GitHub:<br />
+                <a href="https://github.com/Mlok-sys/cloud-observability-platform/blob/main/.github/workflows/deploy.yml"
+                    target="_blank">
+                    GitHub Actions Workflow (deploy.yml)
+                </a>
+            </p>
+        </section>
+
+        <!-- Dashboards -->
+        <section class="screenshots">
+            <h2>Monitoring Dashboards</h2>
+            <p>Below are live dashboards showing real-time metrics and targets:</p>
             <div class="gallery">
-                <img src="images/nodeexporter-dashboard.png" alt="Node Exporter Dashboard">
-                <img src="images/prometheus-targets.png" alt="Prometheus Targets">
-                <img src="images/grafana-app-dashboard.png" alt="Grafana App Dashboard">
+                <img src="images/app-dashboard.png" alt="App Dashboard" />
+                <img src="images/node-exporter-dashboard.png" alt="Node Exporter Dashboard" />
+                <img src="images/nodeexporter1.png" alt="Node Exporter Dashboard 2" />
+                <img src="images/prometheus-targets.png" alt="Prometheus Targets" />
             </div>
         </section>
 
-        <a href="/metrics" class="button">📈 View Live Prometheus Metrics</a>
+        <a href="/metrics" class="button">View Live Prometheus Metrics</a>
     </div>
 
     <script src="script.js"></script>
