@@ -35,6 +35,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// Simulate random 500 errors
+app.get('/fail', (req, res) => {
+  if (Math.random() > 0.5) {
+    res.status(500).send('💥 Simulated Failure!');
+  } else {
+    res.send('✅ Success');
+  }
+});
+
 // Prometheus metrics endpoint
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', client.register.contentType);
