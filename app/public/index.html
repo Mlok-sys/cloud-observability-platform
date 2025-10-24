@@ -8,15 +8,28 @@
 </head>
 <body>
   <div class="container">
+
+    <!-- 🔗 GitHub Repository Section (Top of Page) -->
+    <section class="repository-top">
+      <h2>GitHub Repository</h2>
+      <p>
+        View the full source code, Terraform configuration, Docker Compose files,
+        and CI/CD workflow for this project on GitHub:
+      </p>
+      <a href="https://github.com/Mlok-sys/cloud-observability-platform" 
+         target="_blank" 
+         class="github-button">
+         View Project on GitHub
+      </a>
+    </section>
+
     <h1>Cloud Observability Platform</h1>
-    <p class="subtitle">
-      This web app is fully monitored through <strong>Grafana</strong>, <strong>Prometheus</strong>, and <strong>Loki</strong>.
-    </p>
     <p>
-      A fully monitored and automated cloud project deployed on <strong>AWS EC2</strong>,
-      managed with <strong>Terraform</strong>, and continuously delivered through
-      <strong>GitHub Actions</strong>. The platform integrates <strong>Prometheus</strong>,
-      <strong>Grafana</strong>, and <strong>Loki</strong> to achieve full observability.
+      This application is fully monitored through <strong>Grafana</strong>,
+      <strong>Prometheus</strong>, and <strong>Loki</strong>.
+      The project demonstrates a complete cloud-native observability stack built on 
+      <strong>AWS EC2</strong>, deployed using <strong>Terraform</strong> and automated via 
+      <strong>GitHub Actions</strong>.
     </p>
 
     <section class="stack">
@@ -25,17 +38,17 @@
         <div class="tool">
           <img src="images/grafana.png" alt="Grafana" />
           <h3>Grafana</h3>
-          <p>Visualizes dashboards, metrics, and logs in real time from Prometheus and Loki.</p>
+          <p>Visualizes metrics and logs in real time from Prometheus and Loki.</p>
         </div>
         <div class="tool">
           <img src="images/prometheus.png" alt="Prometheus" />
           <h3>Prometheus</h3>
-          <p>Scrapes and stores metrics from Node Exporter and the app using HTTP endpoints.</p>
+          <p>Scrapes and stores metrics from Node Exporter and the app for monitoring and alerting.</p>
         </div>
         <div class="tool">
           <img src="images/loki.png" alt="Loki" />
           <h3>Loki</h3>
-          <p>Collects container logs, enabling fast debugging by correlating logs and metrics.</p>
+          <p>Aggregates and indexes container logs for observability and debugging.</p>
         </div>
       </div>
     </section>
@@ -43,8 +56,8 @@
     <section class="architecture">
       <h2>Project Architecture</h2>
       <p>
-        The diagram below shows the flow from <strong>GitHub</strong> to <strong>EC2</strong>,
-        which hosts Docker containers for Prometheus, Grafana, Loki, Node Exporter, and the monitored app.
+        The following diagram illustrates the architecture of the Cloud Observability Platform,
+        including the integration between Prometheus, Grafana, Loki, Node Exporter, and the monitored application.
       </p>
       <img src="images/architecture.png" alt="Architecture Diagram" class="diagram architecture-img" />
     </section>
@@ -52,26 +65,26 @@
     <section class="cicd">
       <h2>CI/CD Pipeline</h2>
       <p>
-        This project uses a fully automated deployment pipeline built with <strong>GitHub Actions</strong>.
+        This project uses an automated deployment pipeline built with <strong>GitHub Actions</strong>.
         On every push to the <code>main</code> branch:
       </p>
       <ol class="pipeline-steps">
-        <li>Starts the AWS EC2 instance using <strong>aws-actions</strong>.</li>
-        <li>Copies updated <strong>monitoring</strong> and <strong>app</strong> directories to the instance.</li>
-        <li>Rebuilds and redeploys all containers using <strong>Docker Compose</strong>.</li>
-        <li>Verifies that all monitoring components are running successfully.</li>
+        <li><strong>1.</strong> Starts the AWS EC2 instance automatically.</li>
+        <li><strong>2.</strong> Copies updated <strong>monitoring</strong> and <strong>app</strong> directories to the instance.</li>
+        <li><strong>3.</strong> Rebuilds and redeploys containers with <strong>Docker Compose</strong>.</li>
+        <li><strong>4.</strong> Verifies all observability services are running successfully.</li>
       </ol>
       <p>
-        View the full workflow on GitHub:<br />
+        Full workflow file:
         <a href="https://github.com/Mlok-sys/cloud-observability-platform/blob/main/.github/workflows/deploy.yml" target="_blank">
-          GitHub Actions Workflow (deploy.yml)
+          deploy.yml on GitHub
         </a>
       </p>
     </section>
 
     <section class="screenshots">
       <h2>Monitoring Dashboards</h2>
-      <p>Below are live dashboards showing real-time metrics and targets:</p>
+      <p>Below are real dashboards from the project showing system and application metrics:</p>
       <div class="gallery">
         <img src="images/app-dashboard.png" alt="App Dashboard" />
         <img src="images/nodeexporter-dashboard.png" alt="Node Exporter Dashboard" />
@@ -82,7 +95,6 @@
 
     <a href="/metrics" class="button">View Live Prometheus Metrics</a>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
