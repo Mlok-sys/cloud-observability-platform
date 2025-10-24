@@ -122,12 +122,12 @@ p {
 .pipeline-steps li {
   margin-bottom: 12px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 8px;
 }
 
 .pipeline-steps li strong {
   color: #58a6ff;
-  margin-right: 10px;
   flex-shrink: 0;
 }
 
