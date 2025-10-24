@@ -117,18 +117,18 @@ p {
   margin: 20px auto;
   font-size: 1.1em;
   color: #cfcfcf;
-  counter-reset: step;
 }
 
 .pipeline-steps li {
   margin-bottom: 12px;
-  padding-left: 25px;
-  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .pipeline-steps li strong {
   color: #58a6ff;
   margin-right: 10px;
+  flex-shrink: 0;
 }
 
 /* Screenshots */
@@ -141,7 +141,7 @@ p {
 }
 
 .gallery img {
-  width: 420px;
+  width: 460px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   transition: transform 0.3s ease;
